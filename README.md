@@ -30,10 +30,6 @@ A pixel precise rebuild of the Apple Watch Ultra Wayfinder watchface. All assets
 
 Run project in Xcode and compile.
 
-#### Sideloadly
-
-Download https://sideloadly.io/ and the .ipa file in repository root. Make sure you choose "normal install" in Sideloadly. With "Apple-ID Sideloading" the watchOS app will not occur.
-
 ## Donation
 
 If you like the app – and maybe support further development – feel free to make a donation. Would appreciate that!
