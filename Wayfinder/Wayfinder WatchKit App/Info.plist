@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>NSHealthShareUsageDescription</key>
+	<string>Needs data needs data needs data</string>
+	<key>NSMotionUsageDescription</key>
+	<string>Needs data</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Needs location </string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Needs location </string>
+	<key>WKCompanionAppBundleIdentifier</key>
+	<string>com.kamediendesign.Wayfinder</string>
+</dict>
+</plist>

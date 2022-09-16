@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="19529" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="nLn-9g-gtK">
+    <device id="watch45"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="19514"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="RedHatMonoBold.ttf">
+            <string>RedHatMono-Bold</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Interface Controller-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller fullScreen="YES" id="AgC-eL-Hgc" customClass="InterfaceController" customModule="Wayfinder_WatchKit_App" customModuleProvider="target"/>
+            </objects>
+            <point key="canvasLocation" x="-260" y="-6"/>
+        </scene>
+        <!--WatchFaceController-->
+        <scene sceneID="uzo-Fa-ZiQ">
+            <objects>
+                <controller identifier="WatchFaceController" hidesWhenLoading="NO" fullScreen="YES" id="nLn-9g-gtK" customClass="WatchfaceController" customModule="Wayfinder_WatchKit_Extension">
+                    <items>
+                        <group width="1" height="1" alignment="center" verticalAlignment="center" layout="overlap" id="CM4-Z9-Zfm">
+                            <items>
+                                <group width="1" height="1" alignment="center" verticalAlignment="center" contentMode="scaleAspectFit" layout="overlap" id="zg8-2K-j2e">
+                                    <items>
+                                        <imageView width="1" height="1" alignment="left" image="Rings" contentMode="scaleAspectFit" id="Ep9-KS-fBD"/>
+                                    </items>
+                                    <edgeInsets key="margins" left="2" right="2" top="2" bottom="2"/>
+                                </group>
+                                <group width="1" height="1" alignment="center" verticalAlignment="center" contentMode="scaleAspectFit" layout="overlap" id="0WS-W8-eMC">
+                                    <items>
+                                        <spriteKitScene width="1" height="1" alignment="center" verticalAlignment="center" preferredFramesPerSecond="60" scene="Compass.sks" id="xLf-OV-Z6c"/>
+                                    </items>
+                                    <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
+                                </group>
+                                <group width="1" height="1" alignment="center" verticalAlignment="center" contentMode="scaleAspectFit" layout="overlap" id="9TJ-tP-sdY">
+                                    <items>
+                                        <imageView alignment="center" verticalAlignment="center" contentMode="center" id="e8V-iY-ZoE"/>
+                                    </items>
+                                    <edgeInsets key="margins" left="2" right="2" top="2" bottom="2"/>
+                                </group>
+                                <group width="1" height="1" alignment="center" verticalAlignment="center" contentMode="scaleAspectFit" layout="overlap" id="w4E-bb-7oE">
+                                    <items>
+                                        <group width="34" height="34" alignment="left" id="SBT-fu-n4R">
+                                            <items>
+                                                <imageView width="1" height="1" alignment="left" image="AltitudeIcon" contentMode="scaleAspectFit" id="5nB-2l-Q6f"/>
+                                            </items>
+                                            <edgeInsets key="margins" left="10" right="0.0" top="10" bottom="0.0"/>
+                                            <variation key="device=watch41mm" height="28" width="28">
+                                                <edgeInsets key="margins" left="8" right="0.0" top="8" bottom="0.0"/>
+                                            </variation>
+                                            <variation key="device=watch44mm" height="32" width="32">
+                                                <edgeInsets key="margins" left="8" right="0.0" top="8" bottom="0.0"/>
+                                            </variation>
+                                        </group>
+                                        <imageView alignment="center" verticalAlignment="center" contentMode="scaleAspectFit" id="oCf-Ml-VJj"/>
+                                    </items>
+                                    <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
+                                </group>
+                                <group width="1" height="1" alignment="center" verticalAlignment="center" contentMode="scaleAspectFit" layout="overlap" id="0bf-TQ-vHS">
+                                    <items>
+                                        <group width="34" height="34" alignment="right" hidden="YES" id="oQa-YI-baP">
+                                            <items>
+                                                <imageView width="1" height="1" alignment="right" image="heartRate" contentMode="scaleAspectFit" id="6de-yb-DnP"/>
+                                            </items>
+                                            <edgeInsets key="margins" left="0.0" right="10" top="10" bottom="0.0"/>
+                                        </group>
+                                        <imageView alignment="center" verticalAlignment="center" contentMode="scaleAspectFit" id="uEn-0h-Cjr"/>
+                                    </items>
+                                    <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
+                                </group>
+                                <group width="1" height="1" alignment="center" verticalAlignment="center" contentMode="scaleAspectFit" layout="overlap" id="j5A-rx-46o">
+                                    <items>
+                                        <group width="34" height="34" alignment="right" verticalAlignment="bottom" id="FY6-sb-3ms">
+                                            <items>
+                                                <imageView width="1" height="1" alignment="right" verticalAlignment="bottom" image="walkIcon" contentMode="scaleAspectFit" id="kQl-oD-ng4"/>
+                                            </items>
+                                            <edgeInsets key="margins" left="0.0" right="10" top="0.0" bottom="10"/>
+                                            <variation key="device=watch41mm" height="28" width="28">
+                                                <edgeInsets key="margins" left="0.0" right="8" top="0.0" bottom="8"/>
+                                            </variation>
+                                            <variation key="device=watch44mm" height="32" width="32">
+                                                <edgeInsets key="margins" left="0.0" right="8" top="0.0" bottom="8"/>
+                                            </variation>
+                                        </group>
+                                        <imageView alignment="center" verticalAlignment="center" contentMode="scaleAspectFit" id="FfT-1C-eSQ"/>
+                                    </items>
+                                    <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
+                                </group>
+                                <group width="1" height="1" alignment="center" verticalAlignment="center" contentMode="scaleAspectFit" layout="overlap" id="6Yb-TI-lOc">
+                                    <items>
+                                        <imageView alignment="center" verticalAlignment="center" contentMode="scaleAspectFit" id="aSR-PE-mUz"/>
+                                    </items>
+                                    <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
+                                </group>
+                                <group width="1" alignment="center" verticalAlignment="center" contentMode="scaleAspectFit" layout="vertical" id="OcZ-fG-HEb">
+                                    <items>
+                                        <label height="12" alignment="center" text="315°NW" id="9Jw-Ep-v9C">
+                                            <fontDescription key="font" name="RedHatMono-Bold" family="Red Hat Mono" pointSize="14"/>
+                                        </label>
+                                        <group width="1" alignment="left" id="kr4-xg-lci">
+                                            <items>
+                                                <group width="10" height="8" alignment="center" id="Ojm-ev-D2i">
+                                                    <items>
+                                                        <group width="8" height="8" alignment="center" radius="4" id="0mO-93-ZOu">
+                                                            <color key="backgroundColor" red="0.12156862745098039" green="0.85882352941176465" blue="0.44313725490196076" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
+                                                        </group>
+                                                    </items>
+                                                    <edgeInsets key="margins" left="1" right="1" top="0.0" bottom="0.0"/>
+                                                </group>
+                                                <group width="10" height="8" alignment="center" id="zEe-6e-UTG">
+                                                    <items>
+                                                        <group width="8" height="8" alignment="center" radius="4" id="RbW-bj-y37">
+                                                            <color key="backgroundColor" red="0.1215686275" green="0.85882352939999995" blue="0.4431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
+                                                        </group>
+                                                    </items>
+                                                    <edgeInsets key="margins" left="1" right="1" top="0.0" bottom="0.0"/>
+                                                </group>
+                                                <group width="10" height="8" alignment="center" id="lCT-GI-vj5">
+                                                    <items>
+                                                        <group width="8" height="8" alignment="center" radius="4" id="iYt-TN-bon">
+                                                            <color key="backgroundColor" red="0.1215686275" green="0.85882352939999995" blue="0.4431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
+                                                        </group>
+                                                    </items>
+                                                    <edgeInsets key="margins" left="1" right="1" top="0.0" bottom="0.0"/>
+                                                </group>
+                                                <group width="10" height="8" alignment="center" id="IFT-Cn-gXJ">
+                                                    <items>
+                                                        <group width="8" height="8" alignment="center" radius="4" id="XNY-7X-C5x">
+                                                            <color key="backgroundColor" red="0.1215686275" green="0.85882352939999995" blue="0.4431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="0.0"/>
+                                                        </group>
+                                                    </items>
+                                                    <edgeInsets key="margins" left="1" right="1" top="0.0" bottom="0.0"/>
+                                                </group>
+                                            </items>
+                                        </group>
+                                    </items>
+                                    <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="68"/>
+                                    <variation key="device=watch41mm">
+                                        <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="59"/>
+                                    </variation>
+                                    <variation key="device=watch44mm">
+                                        <edgeInsets key="margins" left="0.0" right="0.0" top="0.0" bottom="64"/>
+                                    </variation>
+                                </group>
+                                <group alignment="center" verticalAlignment="center" layout="overlap" id="lFY-K3-XBc">
+                                    <items>
+                                        <group width="108" height="108" alignment="center" verticalAlignment="center" layout="overlap" id="ufo-5J-4KP">
+                                            <items>
+                                                <group width="42" height="42" alignment="left" verticalAlignment="center" id="YH5-z9-MGF">
+                                                    <items>
+                                                        <imageView width="1" height="1" alignment="left" contentMode="scaleAspectFit" id="u9O-OW-BfV"/>
+                                                    </items>
+                                                    <variation key="device=watch41mm" height="36" width="36"/>
+                                                    <variation key="device=watch44mm" height="40" width="40"/>
+                                                </group>
+                                                <group width="42" height="42" alignment="right" verticalAlignment="center" id="HNo-6O-kKr">
+                                                    <items>
+                                                        <imageView width="1" height="1" alignment="left" contentMode="scaleAspectFit" id="TXm-6p-1oQ"/>
+                                                    </items>
+                                                    <variation key="device=watch41mm" height="36" width="36"/>
+                                                    <variation key="device=watch44mm" height="40" width="40"/>
+                                                </group>
+                                                <group width="42" height="42" alignment="center" verticalAlignment="bottom" id="pew-qU-FAA">
+                                                    <items>
+                                                        <imageView width="1" height="1" alignment="left" contentMode="scaleAspectFit" id="htk-QR-ReQ"/>
+                                                    </items>
+                                                    <variation key="device=watch41mm" height="36" width="36"/>
+                                                    <variation key="device=watch44mm" height="40" width="40"/>
+                                                </group>
+                                            </items>
+                                            <variation key="device=watch41mm" height="96" width="96"/>
+                                            <variation key="device=watch44mm" height="100" width="100"/>
+                                        </group>
+                                    </items>
+                                </group>
+                                <group width="1" height="1" alignment="center" verticalAlignment="center" layout="overlap" id="cLM-xp-m1B">
+                                    <items>
+                                        <spriteKitScene width="154" height="174" alignment="center" verticalAlignment="center" preferredFramesPerSecond="60" scene="FaceScene.sks" id="lGx-6x-hBS">
+                                            <variation key="device=watch41mm" height="154" width="136"/>
+                                            <variation key="device=watch44mm" height="162" width="143"/>
+                                        </spriteKitScene>
+                                    </items>
+                                </group>
+                                <group width="1" height="1" alignment="center" verticalAlignment="center" contentMode="scaleAspectFill" layout="overlap" id="sta-Ht-cJ9">
+                                    <items>
+                                        <imageView width="1" height="1" alignment="left" image="DirectionMarker" contentMode="scaleAspectFill" id="JCM-My-HAw"/>
+                                    </items>
+                                    <edgeInsets key="margins" left="0.0" right="0.0" top="17" bottom="17"/>
+                                </group>
+                            </items>
+                        </group>
+                    </items>
+                    <connections>
+                        <outlet property="altimeterImage" destination="oCf-Ml-VJj" id="PAv-3t-Kag"/>
+                        <outlet property="batteryImage" destination="aSR-PE-mUz" id="Gm2-JW-DiD"/>
+                        <outlet property="centerCompBottom" destination="htk-QR-ReQ" id="f51-mG-ptZ"/>
+                        <outlet property="centerCompLeft" destination="u9O-OW-BfV" id="T23-JW-E6l"/>
+                        <outlet property="centerCompRight" destination="TXm-6p-1oQ" id="AYO-M0-AJw"/>
+                        <outlet property="clockScene" destination="lGx-6x-hBS" id="HRZ-3O-IH1"/>
+                        <outlet property="comp3Image" destination="uEn-0h-Cjr" id="P57-ym-Rwy"/>
+                        <outlet property="comp4Image" destination="FfT-1C-eSQ" id="9Uw-md-0Tb"/>
+                        <outlet property="comp4ImageIcon" destination="kQl-oD-ng4" id="5ym-Vz-Irr"/>
+                        <outlet property="compassDegreeText" destination="9Jw-Ep-v9C" id="Gs8-nh-Bv8"/>
+                        <outlet property="compassScene" destination="xLf-OV-Z6c" id="nmK-pl-N7c"/>
+                        <outlet property="latlonTextCircleImage" destination="e8V-iY-ZoE" id="AB0-dg-jEN"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="-16" y="-6"/>
+        </scene>
+    </scenes>
+    <color key="tintColor" name="AccentColor"/>
+    <resources>
+        <image name="AltitudeIcon" width="25" height="25"/>
+        <image name="DirectionMarker" width="450" height="450"/>
+        <image name="Rings" width="450" height="450"/>
+        <image name="heartRate" width="307" height="307"/>
+        <image name="walkIcon" width="25" height="25"/>
+        <namedColor name="AccentColor">
+            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
