@@ -36,7 +36,7 @@ class WatchfaceController: WKInterfaceController, WKCrownDelegate, CLLocationMan
     var lastTime: Date = Date.now
     var lastAltitude: Double = 0
     
-    var language = "de"
+    var language = "en"
 
     @IBOutlet weak var centerCompBottom: WKInterfaceImage!
     @IBOutlet weak var centerCompRight: WKInterfaceImage!

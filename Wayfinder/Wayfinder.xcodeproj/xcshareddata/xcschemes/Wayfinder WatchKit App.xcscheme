@@ -28,7 +28,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "E8D9666628D38D93008B7CC6"
+               BlueprintIdentifier = "E8FD645428C9F2250037415A"
                BuildableName = "Wayfinder.app"
                BlueprintName = "Wayfinder"
                ReferencedContainer = "container:Wayfinder.xcodeproj">

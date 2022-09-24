@@ -10,7 +10,5 @@
 	<string>Needs location </string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>Needs location </string>
-	<key>WKCompanionAppBundleIdentifier</key>
-	<string>com.CHANGEME.Wayfinder</string>
 </dict>
 </plist>

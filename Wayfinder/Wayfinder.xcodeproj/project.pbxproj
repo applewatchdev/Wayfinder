@@ -23,13 +23,7 @@
 		E8C8705728CBE4CA00D71108 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C8705328CBE4C900D71108 /* Logger.swift */; };
 		E8C8705828CBE4CA00D71108 /* Dynamic.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8C8705428CBE4CA00D71108 /* Dynamic.swift */; };
 		E8C8705C28CBFFC700D71108 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8C8705B28CBFFC700D71108 /* HealthKit.framework */; };
-		E8D9666A28D38D93008B7CC6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D9666928D38D93008B7CC6 /* AppDelegate.swift */; };
-		E8D9666C28D38D93008B7CC6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D9666B28D38D93008B7CC6 /* SceneDelegate.swift */; };
-		E8D9666E28D38D93008B7CC6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D9666D28D38D93008B7CC6 /* ViewController.swift */; };
-		E8D9667128D38D93008B7CC6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8D9666F28D38D93008B7CC6 /* Main.storyboard */; };
-		E8D9667328D38D95008B7CC6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8D9667228D38D95008B7CC6 /* Assets.xcassets */; };
-		E8D9667628D38D95008B7CC6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8D9667428D38D95008B7CC6 /* LaunchScreen.storyboard */; };
-		E8D9667E28D3AB36008B7CC6 /* Wayfinder WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = E8FD645928C9F2250037415A /* Wayfinder WatchKit App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		E8FD645A28C9F2250037415A /* Wayfinder WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = E8FD645928C9F2250037415A /* Wayfinder WatchKit App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		E8FD646028C9F2250037415A /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8FD645E28C9F2250037415A /* Interface.storyboard */; };
 		E8FD646228C9F2270037415A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8FD646128C9F2270037415A /* Assets.xcassets */; };
 		E8FD646828C9F2280037415A /* Wayfinder WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = E8FD646728C9F2280037415A /* Wayfinder WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -40,7 +34,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		E8D9667B28D3AA98008B7CC6 /* PBXContainerItemProxy */ = {
+		E8FD645B28C9F2250037415A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E8FD644F28C9F2250037415A /* Project object */;
 			proxyType = 1;
@@ -57,17 +51,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		E8D9667D28D3AAD4008B7CC6 /* Embed Watch Content */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
-			dstSubfolderSpec = 16;
-			files = (
-				E8D9667E28D3AB36008B7CC6 /* Wayfinder WatchKit App.app in Embed Watch Content */,
-			);
-			name = "Embed Watch Content";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		E8FD647A28C9F2290037415A /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -77,6 +60,17 @@
 				E8FD646828C9F2280037415A /* Wayfinder WatchKit Extension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E8FD647E28C9F2290037415A /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				E8FD645A28C9F2250037415A /* Wayfinder WatchKit App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -98,14 +92,7 @@
 		E8C8705428CBE4CA00D71108 /* Dynamic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dynamic.swift; sourceTree = "<group>"; };
 		E8C8705928CBFFC700D71108 /* Wayfinder WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Wayfinder WatchKit Extension.entitlements"; sourceTree = "<group>"; };
 		E8C8705B28CBFFC700D71108 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS8.3.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
-		E8D9666728D38D93008B7CC6 /* Wayfinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wayfinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		E8D9666928D38D93008B7CC6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E8D9666B28D38D93008B7CC6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E8D9666D28D38D93008B7CC6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		E8D9667028D38D93008B7CC6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		E8D9667228D38D95008B7CC6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		E8D9667528D38D95008B7CC6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		E8D9667728D38D95008B7CC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E8FD645528C9F2250037415A /* Wayfinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wayfinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8FD645928C9F2250037415A /* Wayfinder WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Wayfinder WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8FD645F28C9F2250037415A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
 		E8FD646128C9F2270037415A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -118,13 +105,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		E8D9666428D38D93008B7CC6 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		E8FD646428C9F2280037415A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -154,25 +134,10 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		E8D9666828D38D93008B7CC6 /* Wayfinder */ = {
-			isa = PBXGroup;
-			children = (
-				E8D9666928D38D93008B7CC6 /* AppDelegate.swift */,
-				E8D9666B28D38D93008B7CC6 /* SceneDelegate.swift */,
-				E8D9666D28D38D93008B7CC6 /* ViewController.swift */,
-				E8D9666F28D38D93008B7CC6 /* Main.storyboard */,
-				E8D9667228D38D95008B7CC6 /* Assets.xcassets */,
-				E8D9667428D38D95008B7CC6 /* LaunchScreen.storyboard */,
-				E8D9667728D38D95008B7CC6 /* Info.plist */,
-			);
-			path = Wayfinder;
-			sourceTree = "<group>";
-		};
 		E8FD644E28C9F2250037415A = {
 			isa = PBXGroup;
 			children = (
 				E8C8704228CBC2B300D71108 /* Fonts */,
-				E8D9666828D38D93008B7CC6 /* Wayfinder */,
 				E8FD645D28C9F2250037415A /* Wayfinder WatchKit App */,
 				E8FD646B28C9F2280037415A /* Wayfinder WatchKit Extension */,
 				E8FD645628C9F2250037415A /* Products */,
@@ -183,9 +148,9 @@
 		E8FD645628C9F2250037415A /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				E8FD645528C9F2250037415A /* Wayfinder.app */,
 				E8FD645928C9F2250037415A /* Wayfinder WatchKit App.app */,
 				E8FD646728C9F2280037415A /* Wayfinder WatchKit Extension.appex */,
-				E8D9666728D38D93008B7CC6 /* Wayfinder.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -226,24 +191,22 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E8D9666628D38D93008B7CC6 /* Wayfinder */ = {
+		E8FD645428C9F2250037415A /* Wayfinder */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E8D9667828D38D95008B7CC6 /* Build configuration list for PBXNativeTarget "Wayfinder" */;
+			buildConfigurationList = E8FD647F28C9F2290037415A /* Build configuration list for PBXNativeTarget "Wayfinder" */;
 			buildPhases = (
-				E8D9666328D38D93008B7CC6 /* Sources */,
-				E8D9666428D38D93008B7CC6 /* Frameworks */,
-				E8D9666528D38D93008B7CC6 /* Resources */,
-				E8D9667D28D3AAD4008B7CC6 /* Embed Watch Content */,
+				E8FD645328C9F2250037415A /* Resources */,
+				E8FD647E28C9F2290037415A /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				E8D9667C28D3AA98008B7CC6 /* PBXTargetDependency */,
+				E8FD645C28C9F2250037415A /* PBXTargetDependency */,
 			);
 			name = Wayfinder;
 			productName = Wayfinder;
-			productReference = E8D9666728D38D93008B7CC6 /* Wayfinder.app */;
-			productType = "com.apple.product-type.application";
+			productReference = E8FD645528C9F2250037415A /* Wayfinder.app */;
+			productType = "com.apple.product-type.application.watchapp2-container";
 		};
 		E8FD645828C9F2250037415A /* Wayfinder WatchKit App */ = {
 			isa = PBXNativeTarget;
@@ -289,7 +252,7 @@
 				LastSwiftUpdateCheck = 1320;
 				LastUpgradeCheck = 1320;
 				TargetAttributes = {
-					E8D9666628D38D93008B7CC6 = {
+					E8FD645428C9F2250037415A = {
 						CreatedOnToolsVersion = 13.2.1;
 					};
 					E8FD645828C9F2250037415A = {
@@ -315,7 +278,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E8D9666628D38D93008B7CC6 /* Wayfinder */,
+				E8FD645428C9F2250037415A /* Wayfinder */,
 				E8FD645828C9F2250037415A /* Wayfinder WatchKit App */,
 				E8FD646628C9F2280037415A /* Wayfinder WatchKit Extension */,
 			);
@@ -323,13 +286,10 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		E8D9666528D38D93008B7CC6 /* Resources */ = {
+		E8FD645328C9F2250037415A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E8D9667628D38D95008B7CC6 /* LaunchScreen.storyboard in Resources */,
-				E8D9667328D38D95008B7CC6 /* Assets.xcassets in Resources */,
-				E8D9667128D38D93008B7CC6 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,16 +322,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		E8D9666328D38D93008B7CC6 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E8D9666E28D38D93008B7CC6 /* ViewController.swift in Sources */,
-				E8D9666A28D38D93008B7CC6 /* AppDelegate.swift in Sources */,
-				E8D9666C28D38D93008B7CC6 /* SceneDelegate.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		E8FD646328C9F2280037415A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -391,10 +341,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		E8D9667C28D3AA98008B7CC6 /* PBXTargetDependency */ = {
+		E8FD645C28C9F2250037415A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = E8FD645828C9F2250037415A /* Wayfinder WatchKit App */;
-			targetProxy = E8D9667B28D3AA98008B7CC6 /* PBXContainerItemProxy */;
+			targetProxy = E8FD645B28C9F2250037415A /* PBXContainerItemProxy */;
 		};
 		E8FD646A28C9F2280037415A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -404,22 +354,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		E8D9666F28D38D93008B7CC6 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E8D9667028D38D93008B7CC6 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		E8D9667428D38D95008B7CC6 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E8D9667528D38D95008B7CC6 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
 		E8FD645E28C9F2250037415A /* Interface.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -431,64 +365,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		E8D9667928D38D95008B7CC6 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.2;
-				DEVELOPMENT_TEAM = B9GVX989YN;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Wayfinder/Info.plist;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.CHANGEME.Wayfinder;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = Debug;
-		};
-		E8D9667A28D38D95008B7CC6 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.2;
-				DEVELOPMENT_TEAM = B9GVX989YN;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Wayfinder/Info.plist;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.CHANGEME.Wayfinder;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = Release;
-		};
 		E8FD647528C9F2290037415A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -623,6 +499,7 @@
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Need data for displaying in watch face";
 				INFOPLIST_KEY_NSMotionUsageDescription = "Need data for displaying in watch face";
 				INFOPLIST_KEY_WKExtensionDelegateClassName = Wayfinder_WatchKit_Extension.ExtensionDelegate;
+				INFOPLIST_KEY_WKWatchOnly = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -662,6 +539,7 @@
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Need data for displaying in watch face";
 				INFOPLIST_KEY_NSMotionUsageDescription = "Need data for displaying in watch face";
 				INFOPLIST_KEY_WKExtensionDelegateClassName = Wayfinder_WatchKit_Extension.ExtensionDelegate;
+				INFOPLIST_KEY_WKWatchOnly = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -692,12 +570,8 @@
 				DEVELOPMENT_TEAM = B9GVX989YN;
 				GENERATE_INFOPLIST_FILE = YES;
 				IBSC_MODULE = Wayfinder_WatchKit_Extension;
-				INFOPLIST_FILE = "Wayfinder WatchKit App/Info.plist";
+				INFOPLIST_FILE = "";
 				INFOPLIST_KEY_CFBundleDisplayName = "Wayfinder WatchKit App";
-				INFOPLIST_KEY_NSHealthShareUsageDescription = "Needs data needs data needs data";
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Needs location ";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Needs location ";
-				INFOPLIST_KEY_NSMotionUsageDescription = "Needs data";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -730,12 +604,8 @@
 				DEVELOPMENT_TEAM = B9GVX989YN;
 				GENERATE_INFOPLIST_FILE = YES;
 				IBSC_MODULE = Wayfinder_WatchKit_Extension;
-				INFOPLIST_FILE = "Wayfinder WatchKit App/Info.plist";
+				INFOPLIST_FILE = "";
 				INFOPLIST_KEY_CFBundleDisplayName = "Wayfinder WatchKit App";
-				INFOPLIST_KEY_NSHealthShareUsageDescription = "Needs data needs data needs data";
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Needs location ";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Needs location ";
-				INFOPLIST_KEY_NSMotionUsageDescription = "Needs data";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -755,18 +625,35 @@
 			};
 			name = Release;
 		};
+		E8FD648028C9F2290037415A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.2;
+				DEVELOPMENT_TEAM = B9GVX989YN;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.CHANGEME.Wayfinder;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		E8FD648128C9F2290037415A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.2;
+				DEVELOPMENT_TEAM = B9GVX989YN;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.CHANGEME.Wayfinder;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E8D9667828D38D95008B7CC6 /* Build configuration list for PBXNativeTarget "Wayfinder" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				E8D9667928D38D95008B7CC6 /* Debug */,
-				E8D9667A28D38D95008B7CC6 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		E8FD645228C9F2250037415A /* Build configuration list for PBXProject "Wayfinder" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -790,6 +677,15 @@
 			buildConfigurations = (
 				E8FD647C28C9F2290037415A /* Debug */,
 				E8FD647D28C9F2290037415A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E8FD647F28C9F2290037415A /* Build configuration list for PBXNativeTarget "Wayfinder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E8FD648028C9F2290037415A /* Debug */,
+				E8FD648128C9F2290037415A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
