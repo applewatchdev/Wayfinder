@@ -452,7 +452,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.kamediendesign.Wayfinder;
+				PRODUCT_BUNDLE_IDENTIFIER = com.CHANGEME.Wayfinder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -481,7 +481,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.kamediendesign.Wayfinder;
+				PRODUCT_BUNDLE_IDENTIFIER = com.CHANGEME.Wayfinder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -629,7 +629,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.kamediendesign.Wayfinder.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.CHANGEME.Wayfinder.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -668,7 +668,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.kamediendesign.Wayfinder.watchkitapp.watchkitextension;
+				PRODUCT_BUNDLE_IDENTIFIER = com.CHANGEME.Wayfinder.watchkitapp.watchkitextension;
 				PRODUCT_NAME = "${TARGET_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -694,6 +694,10 @@
 				IBSC_MODULE = Wayfinder_WatchKit_Extension;
 				INFOPLIST_FILE = "Wayfinder WatchKit App/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Wayfinder WatchKit App";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Needs data needs data needs data";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Needs location ";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Needs location ";
+				INFOPLIST_KEY_NSMotionUsageDescription = "Needs data";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -701,7 +705,7 @@
 					"@loader_path/../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.kamediendesign.Wayfinder.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.CHANGEME.Wayfinder.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -728,6 +732,10 @@
 				IBSC_MODULE = Wayfinder_WatchKit_Extension;
 				INFOPLIST_FILE = "Wayfinder WatchKit App/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Wayfinder WatchKit App";
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Needs data needs data needs data";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Needs location ";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Needs location ";
+				INFOPLIST_KEY_NSMotionUsageDescription = "Needs data";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -735,7 +743,7 @@
 					"@loader_path/../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.kamediendesign.Wayfinder.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.CHANGEME.Wayfinder.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
