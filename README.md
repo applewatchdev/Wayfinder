@@ -39,6 +39,9 @@ A pixel precise rebuild of the Apple Watch Ultra Wayfinder watchface. All assets
 
 If you get compile error like Bundle Identifier not matching check that your Bundle Identifier in step 3 and 4 are matching the "CHANGEME" string.
 
+## Language
+
+If you like german language switch variable to "de" here: Wayfinder WatchKit Extension/WatchfaceController.swift on Line 39. Sorry, it's just hardcoded without real Localization features. Maybe provide that later.
 
 ## Donation
 
