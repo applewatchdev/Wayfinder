@@ -19,6 +19,9 @@ class WatchfaceController: WKInterfaceController, WKCrownDelegate, CLLocationMan
     @IBOutlet weak var clockScene: WKInterfaceSKScene!
     var compassSceneSpriteKit: SKScene!
     var compassNode: SKNode!
+    var compassNodeSn: SKSpriteNode?
+    var compassNodeDeg: SKNode!
+    var compassNodeDegSn: SKSpriteNode?
     var compassHeadingLastDegree: Double = 0
     var clockSceneSpriteKit: FaceScene!
     
@@ -37,6 +40,188 @@ class WatchfaceController: WKInterfaceController, WKCrownDelegate, CLLocationMan
     var lastAltitude: Double = 0
     
     var language = "en"
+    
+    var colorSet = 0
+    var colorSetData = [
+        [ // Default orange
+            "compassRing": UIColor.black,
+            "compassLines": UIColor(red: 250/255, green: 85/255, blue: 4/255, alpha: 1),
+            "compassDeg": UIColor.black,
+            "gaugeBackground": UIColor(red: 60/255, green: 60/255, blue: 60/255, alpha: 1),
+            "circleBackground": UIColor(red: 30/255, green: 34/255, blue: 34/255, alpha: 1),
+            "battery": UIColor(red: 31/255, green: 219/255, blue: 113/255, alpha: 1),
+            "bpm": UIColor(red: 250/255, green: 85/255, blue: 4/255, alpha: 1),
+            "ring1": UIColor(red: 255/255, green: 0/255, blue: 80/255, alpha: 1),
+            "ring2": UIColor(red: 155/255, green: 255/255, blue: 70/255, alpha: 1),
+            "ring3": UIColor(red: 0/255, green: 220/255, blue: 250/255, alpha: 1),
+            "spo2": UIColor(red: 50/255, green: 171/255, blue: 227/255, alpha: 1),
+            "spo2value": UIColor.white,
+            "date": UIColor.white,
+            "dateday": UIColor(red: 225/255, green: 35/255, blue: 35/255, alpha: 1),
+            "altimeter": UIColor(red: 250/255, green: 85/255, blue: 4/255, alpha: 1),
+            "directionMarker": UIColor(red: 250/255, green: 85/255, blue: 4/255, alpha: 1),
+            "ringOuter": UIColor(red: 232/255, green: 224/255, blue: 213/255, alpha: 1),
+            "ringInner": UIColor(red: 250/255, green: 85/255, blue: 4/255, alpha: 1),
+            "ringHours": UIColor.white,
+            "ringMinutes": UIColor(red: 116/255, green: 116/255, blue: 116/255, alpha: 1),
+            "signal1": UIColor(red: 31/255, green: 219/255, blue: 113/255, alpha: 1),
+            "signal2": UIColor(red: 31/255, green: 219/255, blue: 113/255, alpha: 1),
+            "signal3": UIColor(red: 31/255, green: 219/255, blue: 113/255, alpha: 1),
+            "signal4": UIColor(red: 31/255, green: 219/255, blue: 113/255, alpha: 1),
+            "compassDegreeText": UIColor.white,
+            "distanceValue": UIColor(red: 155/255, green: 255/255, blue: 70/255, alpha: 1),
+            "hourHand": UIColor.white,
+            "minuteHand": UIColor.white,
+            "secondHand": UIColor.white,
+        ],
+        [ // Night mode
+            "compassRing": UIColor(red: 255/255, green: 0/255, blue: 33/255, alpha: 1),
+            "compassLines": UIColor(red: 125/255, green: 0/255, blue: 10/255, alpha: 1),
+            "compassDeg": UIColor(red: 255/255, green: 0/255, blue: 33/255, alpha: 1),
+            "gaugeBackground": UIColor(red: 58/255, green: 10/255, blue: 10/255, alpha: 1),
+            "circleBackground": UIColor(red: 58/255, green: 10/255, blue: 10/255, alpha: 1),
+            "battery": UIColor(red: 255/255, green: 0/255, blue: 33/255, alpha: 1),
+            "bpm": UIColor(red: 255/255, green: 0/255, blue: 33/255, alpha: 1),
+            "ring1": UIColor(red: 255/255, green: 0/255, blue: 33/255, alpha: 1),
+            "ring2": UIColor(red: 255/255, green: 0/255, blue: 33/255, alpha: 1),
+            "ring3": UIColor(red: 255/255, green: 0/255, blue: 33/255, alpha: 1),
+            "spo2": UIColor(red: 255/255, green: 0/255, blue: 33/255, alpha: 1),
+            "spo2value": UIColor(red: 255/255, green: 0/255, blue: 33/255, alpha: 1),
+            "date": UIColor(red: 255/255, green: 0/255, blue: 33/255, alpha: 1),
+            "dateday": UIColor(red: 255/255, green: 0/255, blue: 33/255, alpha: 1),
+            "altimeter": UIColor(red: 255/255, green: 0/255, blue: 33/255, alpha: 1),
+            "directionMarker": UIColor(red: 255/255, green: 0/255, blue: 33/255, alpha: 1),
+            "ringOuter": UIColor.black,  
+            "ringInner": UIColor(red: 58/255, green: 10/255, blue: 10/255, alpha: 1),
+            "ringHours": UIColor(red: 255/255, green: 0/255, blue: 33/255, alpha: 1),
+            "ringMinutes": UIColor(red: 255/255, green: 0/255, blue: 33/255, alpha: 1),
+            "signal1": UIColor(red: 255/255, green: 0/255, blue: 33/255, alpha: 1),
+            "signal2": UIColor(red: 255/255, green: 0/255, blue: 33/255, alpha: 1),
+            "signal3": UIColor(red: 255/255, green: 0/255, blue: 33/255, alpha: 1),
+            "signal4": UIColor(red: 255/255, green: 0/255, blue: 33/255, alpha: 1),
+            "compassDegreeText": UIColor(red: 255/255, green: 0/255, blue: 33/255, alpha: 1),
+            "distanceValue": UIColor(red: 255/255, green: 0/255, blue: 33/255, alpha: 1),
+            "hourHand": UIColor(red: 255/255, green: 0/255, blue: 33/255, alpha: 1),
+            "minuteHand": UIColor(red: 255/255, green: 0/255, blue: 33/255, alpha: 1),
+            "secondHand": UIColor(red: 255/255, green: 0/255, blue: 33/255, alpha: 1),
+        ],
+        [ // Yellow/white
+            "compassRing": UIColor.black,
+            "compassLines": UIColor.black,
+            "compassDeg": UIColor.black,
+            "gaugeBackground": UIColor(red: 60/255, green: 60/255, blue: 60/255, alpha: 1),
+            "circleBackground": UIColor(red: 30/255, green: 34/255, blue: 34/255, alpha: 1),
+            "battery": UIColor(red: 255/255, green: 222/255, blue: 8/255, alpha: 1),
+            "bpm": UIColor(red: 255/255, green: 222/255, blue: 8/255, alpha: 1),
+            "ring1": UIColor(red: 255/255, green: 222/255, blue: 8/255, alpha: 1),
+            "ring2": UIColor(red: 255/255, green: 222/255, blue: 8/255, alpha: 1),
+            "ring3": UIColor(red: 255/255, green: 222/255, blue: 8/255, alpha: 1),
+            "spo2": UIColor(red: 255/255, green: 222/255, blue: 8/255, alpha: 1),
+            "spo2value": UIColor(red: 255/255, green: 222/255, blue: 8/255, alpha: 1),
+            "date": UIColor(red: 255/255, green: 222/255, blue: 8/255, alpha: 1),
+            "dateday": UIColor(red: 255/255, green: 222/255, blue: 8/255, alpha: 1),
+            "altimeter": UIColor(red: 255/255, green: 222/255, blue: 8/255, alpha: 1),
+            "directionMarker": UIColor(red: 255/255, green: 222/255, blue: 8/255, alpha: 1),
+            "ringOuter": UIColor(red: 235/255, green: 225/255, blue: 216/255, alpha: 1),
+            "ringInner": UIColor(red: 255/255, green: 222/255, blue: 8/255, alpha: 1),
+            "ringHours": UIColor.white,
+            "ringMinutes": UIColor(red: 116/255, green: 116/255, blue: 116/255, alpha: 1),
+            "signal1": UIColor(red: 60/255, green: 60/255, blue: 60/255, alpha: 1),
+            "signal2": UIColor(red: 60/255, green: 60/255, blue: 60/255, alpha: 1),
+            "signal3": UIColor(red: 60/255, green: 60/255, blue: 60/255, alpha: 1),
+            "signal4": UIColor(red: 60/255, green: 60/255, blue: 60/255, alpha: 1),
+            "compassDegreeText": UIColor.white,
+            "distanceValue": UIColor(red: 255/255, green: 222/255, blue: 8/255, alpha: 1),
+            "hourHand": UIColor.white,
+            "minuteHand": UIColor.white,
+            "secondHand": UIColor.white,
+        ],
+        [ // Yellow/colored/white
+            "compassRing": UIColor.black,
+            "compassLines": UIColor.black,
+            "compassDeg": UIColor.black,
+            "gaugeBackground": UIColor(red: 60/255, green: 60/255, blue: 60/255, alpha: 1),
+            "circleBackground": UIColor(red: 30/255, green: 34/255, blue: 34/255, alpha: 1),
+            "battery": UIColor(red: 31/255, green: 219/255, blue: 113/255, alpha: 1),
+            "bpm": UIColor(red: 250/255, green: 85/255, blue: 4/255, alpha: 1),
+            "ring1": UIColor(red: 255/255, green: 0/255, blue: 80/255, alpha: 1),
+            "ring2": UIColor(red: 155/255, green: 255/255, blue: 70/255, alpha: 1),
+            "ring3": UIColor(red: 0/255, green: 220/255, blue: 250/255, alpha: 1),
+            "spo2": UIColor(red: 50/255, green: 171/255, blue: 227/255, alpha: 1),
+            "spo2value": UIColor.white,
+            "date": UIColor.white,
+            "dateday": UIColor(red: 225/255, green: 35/255, blue: 35/255, alpha: 1),
+            "altimeter": UIColor(red: 250/255, green: 85/255, blue: 4/255, alpha: 1),
+            "directionMarker": UIColor(red: 255/255, green: 222/255, blue: 8/255, alpha: 1),
+            "ringOuter": UIColor(red: 235/255, green: 225/255, blue: 216/255, alpha: 1),
+            "ringInner": UIColor(red: 255/255, green: 222/255, blue: 8/255, alpha: 1),
+            "ringHours": UIColor.white,
+            "ringMinutes": UIColor(red: 116/255, green: 116/255, blue: 116/255, alpha: 1),
+            "signal1": UIColor(red: 31/255, green: 219/255, blue: 113/255, alpha: 1),
+            "signal2": UIColor(red: 31/255, green: 219/255, blue: 113/255, alpha: 1),
+            "signal3": UIColor(red: 31/255, green: 219/255, blue: 113/255, alpha: 1),
+            "signal4": UIColor(red: 31/255, green: 219/255, blue: 113/255, alpha: 1),
+            "compassDegreeText": UIColor.white,
+            "distanceValue": UIColor(red: 155/255, green: 255/255, blue: 70/255, alpha: 1),
+            "hourHand": UIColor.white,
+            "minuteHand": UIColor.white,
+            "secondHand": UIColor.white,
+        ],
+        [ // Blue/white
+            "compassRing": UIColor.black,
+            "compassLines": UIColor(red: 82/255, green: 156/255, blue: 196/255, alpha: 1),
+            "compassDeg": UIColor.black,
+            "gaugeBackground": UIColor(red: 60/255, green: 60/255, blue: 60/255, alpha: 1),
+            "circleBackground": UIColor(red: 30/255, green: 34/255, blue: 34/255, alpha: 1),
+            "battery": UIColor(red: 31/255, green: 219/255, blue: 113/255, alpha: 1),
+            "bpm": UIColor(red: 250/255, green: 85/255, blue: 4/255, alpha: 1),
+            "ring1": UIColor(red: 255/255, green: 0/255, blue: 80/255, alpha: 1),
+            "ring2": UIColor(red: 155/255, green: 255/255, blue: 70/255, alpha: 1),
+            "ring3": UIColor(red: 0/255, green: 220/255, blue: 250/255, alpha: 1),
+            "spo2": UIColor(red: 50/255, green: 171/255, blue: 227/255, alpha: 1),
+            "spo2value": UIColor.white,
+            "date": UIColor.white,
+            "dateday": UIColor(red: 225/255, green: 35/255, blue: 35/255, alpha: 1),
+            "altimeter": UIColor(red: 250/255, green: 85/255, blue: 4/255, alpha: 1),
+            "directionMarker": UIColor(red: 250/255, green: 85/255, blue: 4/255, alpha: 1),
+            "ringOuter": UIColor(red: 212/255, green: 217/255, blue: 225/255, alpha: 1),
+            "ringInner": UIColor(red: 38/255, green: 152/255, blue: 209/255, alpha: 1),
+            "ringHours": UIColor.white,
+            "ringMinutes": UIColor(red: 116/255, green: 116/255, blue: 116/255, alpha: 1),
+            "signal1": UIColor(red: 31/255, green: 219/255, blue: 113/255, alpha: 1),
+            "signal2": UIColor(red: 31/255, green: 219/255, blue: 113/255, alpha: 1),
+            "signal3": UIColor(red: 31/255, green: 219/255, blue: 113/255, alpha: 1),
+            "signal4": UIColor(red: 31/255, green: 219/255, blue: 113/255, alpha: 1),
+            "compassDegreeText": UIColor.white,
+            "distanceValue": UIColor(red: 155/255, green: 255/255, blue: 70/255, alpha: 1),
+            "hourHand": UIColor.white,
+            "minuteHand": UIColor.white,
+            "secondHand": UIColor.white,
+        ],
+    ]
+    var iconSetData = [
+        [
+            "iconWalk": UIImage(named: "walkIcon"),
+            "iconAlt": UIImage(named: "AltitudeIcon"),
+        ],
+        [
+            "iconWalk": UIImage(named: "walkIconRed"),
+            "iconAlt": UIImage(named: "AltitudeIconRed"),
+        ],
+        [
+            "iconWalk": UIImage(named: "walkIcon"),
+            "iconAlt": UIImage(named: "AltitudeIcon"),
+        ],
+        [
+            "iconWalk": UIImage(named: "walkIcon"),
+            "iconAlt": UIImage(named: "AltitudeIcon"),
+        ],
+        [
+            "iconWalk": UIImage(named: "walkIcon"),
+            "iconAlt": UIImage(named: "AltitudeIcon"),
+        ],
+    ]
+    
 
     @IBOutlet weak var centerCompBottom: WKInterfaceImage!
     @IBOutlet weak var centerCompRight: WKInterfaceImage!
@@ -47,28 +232,86 @@ class WatchfaceController: WKInterfaceController, WKCrownDelegate, CLLocationMan
     @IBOutlet weak var comp3Image: WKInterfaceImage!
     @IBOutlet weak var comp4Image: WKInterfaceImage!
     @IBOutlet weak var comp4ImageIcon: WKInterfaceImage!
+    @IBOutlet weak var directionMarkerImage: WKInterfaceImage!
+    @IBOutlet weak var ringOuterImage: WKInterfaceImage!
+    @IBOutlet weak var ringInnerImage: WKInterfaceImage!
+    @IBOutlet weak var ringHours: WKInterfaceImage!
+    @IBOutlet weak var ringMinutes: WKInterfaceImage!
     
-
+    @IBOutlet weak var imageWalk: WKInterfaceImage!
+    @IBOutlet weak var imageAltmeter: WKInterfaceImage!
+    
+    @IBOutlet weak var signal1: WKInterfaceGroup!
+    @IBOutlet weak var signal2: WKInterfaceGroup!
+    @IBOutlet weak var signal3: WKInterfaceGroup!
+    @IBOutlet weak var signal4: WKInterfaceGroup!
+    
+    var handHour: SKSpriteNode?
+    var handMinute: SKSpriteNode?
+    var handSecond: SKSpriteNode?
+    
     override func awake(withContext context: Any?) {
         
         self.clockSceneSpriteKit = FaceScene.init(fileNamed: "FaceScene")
         self.clockSceneSpriteKit.scaleMode = .aspectFit
         self.clockSceneSpriteKit.backgroundColor = UIColor.clear
+        
+        let faceNode = clockSceneSpriteKit.childNode(withName: "Face")
+        let hourHand = faceNode!.childNode(withName: "Hours")
+        self.handHour = hourHand as? SKSpriteNode
+        let minutesHand = faceNode!.childNode(withName: "Minutes")
+        self.handMinute = minutesHand as? SKSpriteNode
+        let secondHand = faceNode!.childNode(withName: "Seconds")
+        self.handSecond = secondHand as? SKSpriteNode
+        
+        self.handHour!.colorBlendFactor = 1.0
+        self.handHour!.colorBlendFactor = 1.0
+        self.handSecond!.colorBlendFactor = 1.0
+        self.handHour!.color = self.colorSetData[self.colorSet]["hourHand"]!
+        self.handMinute!.color = self.colorSetData[self.colorSet]["minuteHand"]!
+        self.handSecond!.color = self.colorSetData[self.colorSet]["secondHand"]!
+        
         clockScene.presentScene(self.clockSceneSpriteKit)
         
         self.compassSceneSpriteKit = SKScene.init(fileNamed: "Compass")
-        self.compassNode = compassSceneSpriteKit.childNode(withName: "Compass")
         compassSceneSpriteKit.backgroundColor = UIColor.clear
         compassSceneSpriteKit.scaleMode = .aspectFit
+        
+        self.compassNode = compassSceneSpriteKit.childNode(withName: "Compass")
+        self.compassNodeSn = self.compassNode as? SKSpriteNode
+        self.compassNodeDeg = compassSceneSpriteKit.childNode(withName: "CompassDeg")
+        self.compassNodeDegSn = self.compassNodeDeg as? SKSpriteNode
+        
+        self.compassNodeSn!.colorBlendFactor = 1.0
+        self.compassNodeDegSn!.colorBlendFactor = 1.0
+        
+        
         compassScene.presentScene(self.compassSceneSpriteKit)
         
-        //crownSequencer.delegate = self
+        crownSequencer.delegate = self
         
         let app = Dynamic.PUICApplication.sharedPUICApplication()
         app._setStatusBarTimeHidden(true, animated: false, completion: nil)
         
         self.drawTextCircle()
+        
+        
+        self.compassNodeSn!.color = self.colorSetData[self.colorSet]["compassLines"]!
+        self.compassNodeDegSn!.color = self.colorSetData[self.colorSet]["compassDeg"]!
+        
+        self.comp4ImageIcon.setTintColor(self.colorSetData[self.colorSet]["directionMarker"]!)
+        self.ringOuterImage.setTintColor(self.colorSetData[self.colorSet]["ringOuter"]!)
+        self.ringInnerImage.setTintColor(self.colorSetData[self.colorSet]["ringInner"]!)
+        self.signal1.setBackgroundColor(self.colorSetData[self.colorSet]["signal1"]!)
+        self.signal2.setBackgroundColor(self.colorSetData[self.colorSet]["signal2"]!)
+        self.signal3.setBackgroundColor(self.colorSetData[self.colorSet]["signal3"]!)
+        self.signal4.setBackgroundColor(self.colorSetData[self.colorSet]["signal4"]!)
+        self.ringHours.setTintColor(self.colorSetData[self.colorSet]["ringHours"]!)
+        self.ringMinutes.setTintColor(self.colorSetData[self.colorSet]["ringMinutes"]!)
+        self.compassDegreeText.setTextColor(self.colorSetData[self.colorSet]["compassDegreeText"]!)
 
+        self.imageWalk.setImage(self.iconSetData[self.colorSet]["iconWalk"]!)
+        self.imageAltmeter.setImage(self.iconSetData[self.colorSet]["iconAlt"]!)
         
         self.locationManager = CLLocationManager()
         self.locationManager?.delegate = self
@@ -97,25 +340,7 @@ class WatchfaceController: WKInterfaceController, WKCrownDelegate, CLLocationMan
 
         
         
-        // Init Oxygen
-        let sizeCenterCompB = CGSize(width: 42, height: 42)
-        let centerCompB = self.drawCenterText(size: sizeCenterCompB, color: UIColor.white.cgColor, string: "–", subcolor: UIColor(red: 50/255, green: 171/255, blue: 227/255, alpha: 1).cgColor, substring: "SpO2")
-        self.centerCompRight.setImage(centerCompB)
         
-        
-        // Init HR
-        var size = CGSize(width: 210, height: 230)
-        let circleGaugeBg = self.drawGaugeCorner(size: size, color: UIColor(red: 60/255, green: 60/255, blue: 60/255, alpha: 1).cgColor, value: 1, rotation: 37.5 + 180)
-        UIGraphicsBeginImageContextWithOptions(size, false, 0)
-        self.graphicContext = UIGraphicsGetCurrentContext()
-        circleGaugeBg.draw(in: CGRect(x: 0, y: 0, width: size.width, height: size.height), blendMode: CGBlendMode.normal, alpha: 1)
-        self.graphicContext!.translateBy (x: size.width / 2, y: size.height / 2)
-        self.graphicContext!.scaleBy(x: 1, y: -1)
-        self.centreArcPerpendicular(text: "100", context: self.graphicContext!, radius: 125, angle: ((52.5 + 3) * .pi / 180), colour: UIColor(red: 250/255, green: 85/255, blue: 4/255, alpha: 1), font: UIFont(name: "RedHatMono-Bold", size: 16)!, clockwise: true)
-        self.centreArcPerpendicular(text: "BPM", context: self.graphicContext!, radius: 123, angle: ((52.5 - 8) * .pi / 180), colour: UIColor(red: 250/255, green: 85/255, blue: 4/255, alpha: 1), font: UIFont(name: "RedHatMono-Bold", size: 8)!, clockwise: true)
-        var returnImage = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
-        self.comp3Image.setImage(returnImage)
         
         
         
@@ -124,28 +349,12 @@ class WatchfaceController: WKInterfaceController, WKCrownDelegate, CLLocationMan
 
         
         let dateTimer = Timer.scheduledTimer(withTimeInterval: 60, repeats: true) {  [weak self] _ in
-            
-            let customFormatter = DateFormatter()
-            customFormatter.dateFormat = "eeeeee"
-            
-            let customFormatter2 = DateFormatter()
-            customFormatter2.dateFormat = "d"
-            
-            var dateStr: String = customFormatter.string(for: Date.now)!
-            dateStr = dateStr.replacingOccurrences(of: ".", with: "")
-            if(dateStr.count > 3) {
-                let index = dateStr.index(dateStr.startIndex, offsetBy:3)
-                dateStr = String(dateStr[..<index])
-            }
-
-            let sizeCenterCompB = CGSize(width: 42, height: 42)
-            let centerCompB = self!.drawCenterText(size: sizeCenterCompB, color: UIColor.white.cgColor, string: "\(customFormatter2.string(for: Date.now)!)", subcolor: UIColor(red: 225/255, green: 35/255, blue: 35/255, alpha: 1).cgColor, substring: "\(dateStr.uppercased())")
-            self!.centerCompBottom.setImage(centerCompB)
+            self!.fetchDate()
         }
         dateTimer.fire()
         
         
-        
+        self.initDefaultHrAndBpm()
         
 
         self.altimeter = CMAltimeter()
@@ -159,7 +368,7 @@ class WatchfaceController: WKInterfaceController, WKCrownDelegate, CLLocationMan
                 self.graphicContext!.translateBy (x: size.width / 2, y: size.height / 2)
                 self.graphicContext!.scaleBy(x: 1, y: -1)
                 
-                self.centreArcPerpendicular(text: "\(Int(self.lastAltitude)) M", context: self.graphicContext!, radius: 112, angle: (127.5 * .pi / 180), colour: UIColor(red: 250/255, green: 85/255, blue: 4/255, alpha: 1), font: UIFont(name: "RedHatMono-Bold", size: 14)!, clockwise: true)
+                self.centreArcPerpendicular(text: "\(Int(self.lastAltitude)) M", context: self.graphicContext!, radius: 112, angle: (127.5 * .pi / 180), colour: self.colorSetData[self.colorSet]["altimeter"]!, font: UIFont(name: "RedHatMono-Bold", size: 14)!, clockwise: true)
                 let returnImage = UIGraphicsGetImageFromCurrentImageContext()!
                 UIGraphicsEndImageContext()
                 self.altimeterImage.setImage(returnImage)
@@ -169,58 +378,146 @@ class WatchfaceController: WKInterfaceController, WKCrownDelegate, CLLocationMan
         
 
         let batteryTimer = Timer.scheduledTimer(withTimeInterval: 60, repeats: true) {  [weak self] _ in
-            WKInterfaceDevice.current().isBatteryMonitoringEnabled = true
-            var batteryLevel = CGFloat(WKInterfaceDevice.current().batteryLevel)
-            if(batteryLevel < 0) {
-                batteryLevel = 0.5
-            }
-            
-            let size = CGSize(width: 210, height: 230)
-            
-            var batteryColor = UIColor(red: 31/255, green: 219/255, blue: 113/255, alpha: 1)
-            if(batteryLevel < 0.2) {
-                batteryColor = UIColor(red: 225/255, green: 35/255, blue: 35/255, alpha: 1)
-            }
-            let circleGaugeBg = self!.drawGaugeCorner(size: size, color: UIColor(red: 60/255, green: 60/255, blue: 60/255, alpha: 1).cgColor, value: 1, rotation: 37.5)
-            let circleGaugeFg = self!.drawGaugeCorner(size: size, color: batteryColor.cgColor, value: batteryLevel, rotation: 37.5)
-            
-            UIGraphicsBeginImageContextWithOptions(size, false, 0)
-            self!.graphicContext = UIGraphicsGetCurrentContext()
-            circleGaugeBg.draw(in: CGRect(x: 0, y: 0, width: size.width, height: size.height), blendMode: CGBlendMode.normal, alpha: 1)
-            circleGaugeFg.draw(in: CGRect(x: 0, y: 0, width: size.width, height: size.height), blendMode: CGBlendMode.normal, alpha: 1)
-            self!.graphicContext!.translateBy (x: size.width / 2, y: size.height / 2)
-            self!.graphicContext!.scaleBy(x: 1, y: -1)
-            //self!.centreArcPerpendicular(text: "——————", context: self!.graphicContext!, radius: 111, angle: (-127.5 * .pi / 180), colour: UIColor(red: 31/255, green: 219/255, blue: 113/255, alpha: 1), font: UIFont(name: "RedHatMono-Bold", size: 14)!, clockwise: false)
-            self!.centreArcPerpendicular(text: "\(Int(roundf(Float(batteryLevel) * 100)))%", context: self!.graphicContext!, radius: 125, angle: (-127.5 * .pi / 180), colour: batteryColor, font: UIFont(name: "RedHatMono-Bold", size: 16)!, clockwise: false)
-
-
-            let returnImage = UIGraphicsGetImageFromCurrentImageContext()!
-            UIGraphicsEndImageContext()
-            self!.batteryImage.setImage(returnImage)
+            self!.fetchBattery()
         }
         batteryTimer.fire()
 
         
     }
     
+    func initDefaultHrAndBpm() {
+        // Init Oxygen
+        let sizeCenterCompB = CGSize(width: 42, height: 42)
+        let centerCompB = self.drawCenterText(size: sizeCenterCompB, color: (self.colorSetData[self.colorSet]["spo2value"]!).cgColor, string: "–", subcolor: (self.colorSetData[self.colorSet]["spo2"]!).cgColor, substring: "SpO2")
+        self.centerCompRight.setImage(centerCompB)
+        
+        
+        // Init HR
+        var size = CGSize(width: 210, height: 230)
+        let circleGaugeBg = self.drawGaugeCorner(size: size, color: (self.colorSetData[self.colorSet]["gaugeBackground"]!).cgColor, value: 1, rotation: 37.5 + 180)
+        UIGraphicsBeginImageContextWithOptions(size, false, 0)
+        self.graphicContext = UIGraphicsGetCurrentContext()
+        circleGaugeBg.draw(in: CGRect(x: 0, y: 0, width: size.width, height: size.height), blendMode: CGBlendMode.normal, alpha: 1)
+        self.graphicContext!.translateBy (x: size.width / 2, y: size.height / 2)
+        self.graphicContext!.scaleBy(x: 1, y: -1)
+        self.centreArcPerpendicular(text: "100", context: self.graphicContext!, radius: 125, angle: ((52.5 + 3) * .pi / 180), colour: self.colorSetData[self.colorSet]["bpm"]!, font: UIFont(name: "RedHatMono-Bold", size: 16)!, clockwise: true)
+        self.centreArcPerpendicular(text: "BPM", context: self.graphicContext!, radius: 122, angle: ((52.5 - 8) * .pi / 180), colour: self.colorSetData[self.colorSet]["bpm"]!, font: UIFont(name: "RedHatMono-Bold", size: 8)!, clockwise: true)
+        var returnImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        self.comp3Image.setImage(returnImage)
+    }
+    
+    func fetchDate() {
+        let customFormatter = DateFormatter()
+        customFormatter.dateFormat = "eeeeee"
+        
+        let customFormatter2 = DateFormatter()
+        customFormatter2.dateFormat = "d"
+        
+        var dateStr: String = customFormatter.string(for: Date.now)!
+        dateStr = dateStr.replacingOccurrences(of: ".", with: "")
+        if(dateStr.count > 3) {
+            let index = dateStr.index(dateStr.startIndex, offsetBy:3)
+            dateStr = String(dateStr[..<index])
+        }
+
+        let sizeCenterCompB = CGSize(width: 42, height: 42)
+        let centerCompB = self.drawCenterText(size: sizeCenterCompB, color: (self.colorSetData[self.colorSet]["date"]!).cgColor, string: "\(customFormatter2.string(for: Date.now)!)", subcolor: (self.colorSetData[self.colorSet]["dateday"]!).cgColor, substring: "\(dateStr.uppercased())")
+        self.centerCompBottom.setImage(centerCompB)
+    }
+    
+    func fetchBattery() {
+        WKInterfaceDevice.current().isBatteryMonitoringEnabled = true
+        var batteryLevel = CGFloat(WKInterfaceDevice.current().batteryLevel)
+        if(batteryLevel < 0) {
+            batteryLevel = 0.5
+        }
+        
+        let size = CGSize(width: 210, height: 230)
+        
+        var batteryColor = (self.colorSetData[self.colorSet]["battery"] as! UIColor)
+        if(batteryLevel < 0.2) {
+            batteryColor = UIColor(red: 225/255, green: 35/255, blue: 35/255, alpha: 1)
+        }
+        let circleGaugeBg = self.drawGaugeCorner(size: size, color: (self.colorSetData[self.colorSet]["gaugeBackground"] as! UIColor).cgColor, value: 1, rotation: 37.5)
+        let circleGaugeFg = self.drawGaugeCorner(size: size, color: batteryColor.cgColor, value: batteryLevel, rotation: 37.5)
+        
+        UIGraphicsBeginImageContextWithOptions(size, false, 0)
+        self.graphicContext = UIGraphicsGetCurrentContext()
+        circleGaugeBg.draw(in: CGRect(x: 0, y: 0, width: size.width, height: size.height), blendMode: CGBlendMode.normal, alpha: 1)
+        circleGaugeFg.draw(in: CGRect(x: 0, y: 0, width: size.width, height: size.height), blendMode: CGBlendMode.normal, alpha: 1)
+        self.graphicContext!.translateBy (x: size.width / 2, y: size.height / 2)
+        self.graphicContext!.scaleBy(x: 1, y: -1)
+        //self!.centreArcPerpendicular(text: "——————", context: self!.graphicContext!, radius: 111, angle: (-127.5 * .pi / 180), colour: UIColor(red: 31/255, green: 219/255, blue: 113/255, alpha: 1), font: UIFont(name: "RedHatMono-Bold", size: 14)!, clockwise: false)
+        self.centreArcPerpendicular(text: "\(Int(roundf(Float(batteryLevel) * 100)))%", context: self.graphicContext!, radius: 125, angle: (-127.5 * .pi / 180), colour: batteryColor, font: UIFont(name: "RedHatMono-Bold", size: 16)!, clockwise: false)
+
+
+        let returnImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        self.batteryImage.setImage(returnImage)
+    }
+    
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
         
-        //crownSequencer.focus()
+        crownSequencer.focus()
     }
     
     override func didDeactivate() {
         // This method is called when watch view controller is no longer visible
     }
     
-    /*
+    
     func crownDidRotate(_ crownSequencer: WKCrownSequencer?, rotationalDelta: Double) {
         
-        self.crownAccumulator += rotationalDelta
-        self.compassNode.zRotation = CGFloat(self.crownAccumulator)
-        
+        self.crownAccumulator += rotationalDelta * 1.3
+        if(Int(self.crownAccumulator) > (self.colorSetData.count - 1)) {
+            self.crownAccumulator = 0
+        }
+        if(Int(self.crownAccumulator) < 0) {
+            self.crownAccumulator = Double(self.colorSetData.count)
+        }
+        var setColorTheme = Int(self.crownAccumulator)
+        if(self.colorSet != setColorTheme && setColorTheme >= 0 && setColorTheme < self.colorSetData.count) {
+            self.colorSet = Int(self.crownAccumulator)
+            self.updateColors()
+        }
     }
-    */
+    
+    
+    func updateColors() {
+        self.compassNodeSn!.color = self.colorSetData[self.colorSet]["compassLines"]!
+        self.compassNodeDegSn!.color = self.colorSetData[self.colorSet]["compassDeg"]!
+        
+        self.comp4ImageIcon.setTintColor(self.colorSetData[self.colorSet]["directionMarker"]!)
+        self.ringOuterImage.setTintColor(self.colorSetData[self.colorSet]["ringOuter"]!)
+        self.ringInnerImage.setTintColor(self.colorSetData[self.colorSet]["ringInner"]!)
+        self.signal1.setBackgroundColor(self.colorSetData[self.colorSet]["signal1"]!)
+        self.signal2.setBackgroundColor(self.colorSetData[self.colorSet]["signal2"]!)
+        self.signal3.setBackgroundColor(self.colorSetData[self.colorSet]["signal3"]!)
+        self.signal4.setBackgroundColor(self.colorSetData[self.colorSet]["signal4"]!)
+        self.ringHours.setTintColor(self.colorSetData[self.colorSet]["ringHours"]!)
+        self.ringMinutes.setTintColor(self.colorSetData[self.colorSet]["ringMinutes"]!)
+        self.compassDegreeText.setTextColor(self.colorSetData[self.colorSet]["compassDegreeText"]!)
+        
+        
+        self.handHour!.color = self.colorSetData[self.colorSet]["hourHand"]!
+        self.handMinute!.color = self.colorSetData[self.colorSet]["minuteHand"]!
+        self.handSecond!.color = self.colorSetData[self.colorSet]["secondHand"]!
+
+        self.imageWalk.setImage(self.iconSetData[self.colorSet]["iconWalk"]!)
+        self.imageAltmeter.setImage(self.iconSetData[self.colorSet]["iconAlt"]!)
+        
+        self.initDefaultHrAndBpm()
+        self.readOxygenSturation()
+        self.readHeartRate()
+        self.drawTextCircle()
+        self.readStepCount()
+        self.readActivitySummary()
+        self.fetchBattery()
+        self.fetchDate()
+    }
+    
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == CLAuthorizationStatus.authorizedAlways {
@@ -266,6 +563,7 @@ class WatchfaceController: WKInterfaceController, WKCrownDelegate, CLLocationMan
         }
         */
         self.compassNode.run(SKAction.rotate(toAngle: (newHeading.magneticHeading * .pi / 180), duration: 0.05))
+        self.compassNodeDeg.run(SKAction.rotate(toAngle: (newHeading.magneticHeading * .pi / 180), duration: 0.05))
         self.compassHeadingLastDegree = newHeading.magneticHeading
     }
     
@@ -404,8 +702,8 @@ class WatchfaceController: WKInterfaceController, WKCrownDelegate, CLLocationMan
             
         }
         
-        self.centreArcPerpendicular(text: "\(breitengrad) \(self.lastLat)   \(laengengrad) \(self.lastLon)", context: self.graphicContext!, radius: radius1, angle: (90 * .pi / 180), colour: UIColor.black, font: UIFont(name: "RedHatMono-Bold", size: fontsize)!, clockwise: true)
-        self.centreArcPerpendicular(text: "\(relativeDate)", context: self.graphicContext!, radius: radius2, angle: (-90 * .pi / 180), colour: UIColor.black, font: UIFont(name: "RedHatMono-Bold", size: fontsize)!, clockwise: false)
+        self.centreArcPerpendicular(text: "\(breitengrad) \(self.lastLat)   \(laengengrad) \(self.lastLon)", context: self.graphicContext!, radius: radius1, angle: (90 * .pi / 180), colour: self.colorSetData[self.colorSet]["compassRing"]!, font: UIFont(name: "RedHatMono-Bold", size: fontsize)!, clockwise: true)
+        self.centreArcPerpendicular(text: "\(relativeDate)", context: self.graphicContext!, radius: radius2, angle: (-90 * .pi / 180), colour: self.colorSetData[self.colorSet]["compassRing"]!, font: UIFont(name: "RedHatMono-Bold", size: fontsize)!, clockwise: false)
         
         let returnImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
@@ -478,7 +776,7 @@ class WatchfaceController: WKInterfaceController, WKCrownDelegate, CLLocationMan
                 
                 //self.centreArcPerpendicular(text: "\(self.stepCount)\(additionalWord)", context: self.graphicContext!, radius: 112, angle: (-52.5 * .pi / 180), colour: UIColor(red: 140/255, green: 140/255, blue: 140/255, alpha: 1), font: UIFont(name: "RedHatMono-Bold", size: 14)!, clockwise: false)
                 
-                self.centreArcPerpendicular(text: "\(distanceOut) \(distanceSign)", context: self.graphicContext!, radius: 112, angle: (-52.5 * .pi / 180), colour: UIColor(red: 155/255, green: 255/255, blue: 70/255, alpha: 1), font: UIFont(name: "RedHatMono-Bold", size: 14)!, clockwise: false)
+                self.centreArcPerpendicular(text: "\(distanceOut) \(distanceSign)", context: self.graphicContext!, radius: 112, angle: (-52.5 * .pi / 180), colour: self.colorSetData[self.colorSet]["distanceValue"]!, font: UIFont(name: "RedHatMono-Bold", size: 14)!, clockwise: false)
                 
                 //self.centreArcPerpendicular(text: "\(distanceOut) \(distanceSign)", context: self.graphicContext!, radius: 126, angle: (-52.5 * .pi / 180), colour: UIColor(red: 35/255, green: 240/255, blue: 170/255, alpha: 1), font: UIFont(name: "RedHatMono-Bold", size: 16)!, clockwise: false)
 
@@ -500,7 +798,7 @@ class WatchfaceController: WKInterfaceController, WKCrownDelegate, CLLocationMan
             if(oxygenSaturation?.count != 0) {
                 if let currData = oxygenSaturation!.last as? HKQuantitySample {
                     let sizeCenterCompB = CGSize(width: 42, height: 42)
-                    let centerCompB = self.drawCenterText(size: sizeCenterCompB, color: UIColor.white.cgColor, string: "\("\(currData.quantity)".replacingOccurrences(of: " %", with: ""))", subcolor: UIColor(red: 50/255, green: 171/255, blue: 227/255, alpha: 1).cgColor, substring: "SpO2")
+                    let centerCompB = self.drawCenterText(size: sizeCenterCompB, color: (self.colorSetData[self.colorSet]["spo2value"]!).cgColor, string: "\("\(currData.quantity)".replacingOccurrences(of: " %", with: ""))", subcolor: (self.colorSetData[self.colorSet]["spo2"]!).cgColor, substring: "SpO2")
                     self.centerCompRight.setImage(centerCompB)
                 }
             }
@@ -549,12 +847,12 @@ class WatchfaceController: WKInterfaceController, WKCrownDelegate, CLLocationMan
             
             let sizeActivity = CGSize(width: 42, height: 42)
             
-            let centerComp1Bg = self.drawRing(size: sizeActivity, color: UIColor(red: 60/255, green: 60/255, blue: 60/255, alpha: 1).cgColor, value: 1, radius: 18)
-            let centerComp1Fg = self.drawRing(size: sizeActivity, color: UIColor(red: 255/255, green: 0/255, blue: 80/255, alpha: 1).cgColor, value: energyProgress, radius: 18)
-            let centerComp2Bg = self.drawRing(size: sizeActivity, color: UIColor(red: 60/255, green: 60/255, blue: 60/255, alpha: 1).cgColor, value: 1, radius: 12)
-            let centerComp2Fg = self.drawRing(size: sizeActivity, color: UIColor(red: 155/255, green: 255/255, blue: 70/255, alpha: 1).cgColor, value: exerciseProgress, radius: 12)
-            let centerComp3Bg = self.drawRing(size: sizeActivity, color: UIColor(red: 60/255, green: 60/255, blue: 60/255, alpha: 1).cgColor, value: 1, radius: 6)
-            let centerComp3Fg = self.drawRing(size: sizeActivity, color: UIColor(red: 0/255, green: 220/255, blue: 250/255, alpha: 1).cgColor, value: standProgress, radius: 6)
+            let centerComp1Bg = self.drawRing(size: sizeActivity, color: (self.colorSetData[self.colorSet]["gaugeBackground"]!).cgColor, value: 1, radius: 18)
+            let centerComp1Fg = self.drawRing(size: sizeActivity, color: (self.colorSetData[self.colorSet]["ring1"]!).cgColor, value: energyProgress, radius: 18)
+            let centerComp2Bg = self.drawRing(size: sizeActivity, color: (self.colorSetData[self.colorSet]["gaugeBackground"]!).cgColor, value: 1, radius: 12)
+            let centerComp2Fg = self.drawRing(size: sizeActivity, color: (self.colorSetData[self.colorSet]["ring2"]!).cgColor, value: exerciseProgress, radius: 12)
+            let centerComp3Bg = self.drawRing(size: sizeActivity, color: (self.colorSetData[self.colorSet]["gaugeBackground"]!).cgColor, value: 1, radius: 6)
+            let centerComp3Fg = self.drawRing(size: sizeActivity, color: (self.colorSetData[self.colorSet]["ring3"]!).cgColor, value: standProgress, radius: 6)
             
             UIGraphicsBeginImageContextWithOptions(sizeActivity, false, 0)
             self.graphicContext = UIGraphicsGetCurrentContext()
@@ -606,8 +904,8 @@ class WatchfaceController: WKInterfaceController, WKCrownDelegate, CLLocationMan
        
                 let size = CGSize(width: 210, height: 230)
                 
-                let circleGaugeBg = self.drawGaugeCorner(size: size, color: UIColor(red: 60/255, green: 60/255, blue: 60/255, alpha: 1).cgColor, value: 1, rotation: 37.5 + 180)
-                let circleGaugeFg = self.drawGaugeCornerDot(size: size, color: UIColor(red: 250/255, green: 85/255, blue: 4/255, alpha: 1).cgColor, value: (1 - valueOfActualPerc), rotation: 37.5 + 180)
+                let circleGaugeBg = self.drawGaugeCorner(size: size, color: (self.colorSetData[self.colorSet]["gaugeBackground"]!).cgColor, value: 1, rotation: 37.5 + 180)
+                let circleGaugeFg = self.drawGaugeCornerDot(size: size, color: (self.colorSetData[self.colorSet]["bpm"]!).cgColor, value: (1 - valueOfActualPerc), rotation: 37.5 + 180)
                 
                 UIGraphicsBeginImageContextWithOptions(size, false, 0)
                 self.graphicContext = UIGraphicsGetCurrentContext()
@@ -618,8 +916,8 @@ class WatchfaceController: WKInterfaceController, WKCrownDelegate, CLLocationMan
                 self.graphicContext!.translateBy (x: size.width / 2, y: size.height / 2)
                 self.graphicContext!.scaleBy(x: 1, y: -1)
                 
-                self.centreArcPerpendicular(text: self.heartRateString, context: self.graphicContext!, radius: 125, angle: ((52.5 + 3) * .pi / 180), colour: UIColor(red: 250/255, green: 85/255, blue: 4/255, alpha: 1), font: UIFont(name: "RedHatMono-Bold", size: 16)!, clockwise: true)
-                self.centreArcPerpendicular(text: "BPM", context: self.graphicContext!, radius: 122, angle: ((52.5 - 8) * .pi / 180), colour: UIColor(red: 250/255, green: 85/255, blue: 4/255, alpha: 1), font: UIFont(name: "RedHatMono-Bold", size: 8)!, clockwise: true)
+                self.centreArcPerpendicular(text: self.heartRateString, context: self.graphicContext!, radius: 125, angle: ((52.5 + 3) * .pi / 180), colour: self.colorSetData[self.colorSet]["bpm"]!, font: UIFont(name: "RedHatMono-Bold", size: 16)!, clockwise: true)
+                self.centreArcPerpendicular(text: "BPM", context: self.graphicContext!, radius: 122, angle: ((52.5 - 8) * .pi / 180), colour: self.colorSetData[self.colorSet]["bpm"]!, font: UIFont(name: "RedHatMono-Bold", size: 8)!, clockwise: true)
 
                 let returnImage = UIGraphicsGetImageFromCurrentImageContext()!
                 UIGraphicsEndImageContext()
@@ -834,7 +1132,7 @@ class WatchfaceController: WKInterfaceController, WKCrownDelegate, CLLocationMan
         UIGraphicsBeginImageContextWithOptions(size, false, 0)
         self.graphicContext = UIGraphicsGetCurrentContext()
         
-        self.graphicContext!.setFillColor(UIColor(red: 30/255, green: 34/255, blue: 34/255, alpha: 1).cgColor)
+        self.graphicContext!.setFillColor((self.colorSetData[self.colorSet]["circleBackground"]!).cgColor)
 
         let rectangle = CGRect(x: 0, y: 0, width: size.width, height: size.height)
         self.graphicContext!.addEllipse(in: rectangle)
@@ -1045,3 +1343,5 @@ extension WKInterfaceDevice {
     }
   }
 }
+
+
