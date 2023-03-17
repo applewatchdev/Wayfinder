@@ -26,7 +26,7 @@ A pixel-perfect recreation of the Apple Watch Ultra Wayfinder watch face. All as
 
 1. Download *Xcode* from the App Store
 2. Open *Xcode*, navigate to *Settings* -> *Accounts* and add your Apple ID
-3. Go to *Targets*, select each of the three targets, and replace the `CHANGEME` part with your preferred text (e.g., your first name). Ensure the same text is used in all instances of `CHANGEME.`
+3. Go to *Targets*, select each of the three targets, and replace the `CHANGEME` part with your preferred text (e.g., your first name). Ensure the same text is used in all instances of `CHANGEME`.
 ![Step3](https://i.ibb.co/6bT7p9f/targets.jpg)
 4. Edit the `Info.plist` file of the WatchKit Extension and change the `WKAppBundleIdentifier` to match the text from step 3.
 ![Step4](https://i.ibb.co/tCCVMHq/info.jpg)
